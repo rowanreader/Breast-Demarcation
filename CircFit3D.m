@@ -15,5 +15,5 @@ end
 circleNormal = V(:, 3);
 circleLocsXY = RodriguesRotation(movedToOrigin, circleNormal, [0, 0, 1]);
 [xc, yc, radius] = circFit(circleLocsXY(:, 1), circleLocsXY(:, 2));
-centerLoc = [xc, yc, 0] + meanLoc;
+centerLoc =  meanLoc;
 end

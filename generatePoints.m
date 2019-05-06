@@ -1,6 +1,6 @@
 % function to generate n points in the shape of a circle or radius r randomly in space
 % just a test function to generate input
-function [pts, theta, phi] = generatePoints
+function pts = generatePoints
 n = 100; % number of points
 r = 50; % radius
 x0 = 0; % Center in x
@@ -37,6 +37,8 @@ theta = randi([0,360], 1, 1);
 theta_rad = pi() * theta / 180.0;
 phi = randi([0,360], 1, 1);
 phi_rad = pi() * phi / 180.0;
+
+% rotation matrices
 rotateX = [
     1 0 0;
     0 cos(theta_rad) -sin(theta_rad);
@@ -51,35 +53,17 @@ for i = 1: n
     pts(i,:) = pts(i,:) *rotateY';
 end
 
-disp("theta = " +theta_rad);
-disp("theta d = " +theta);
-disp("phi = " + phi_rad);
-disp("phi d = " + phi);
-%pts(:,2) = pts(:,2)*cos(theta_rad) - pts(:,3)*sin(theta_rad);
-%pts(:,3) = pts(:,2)*sin(theta_rad) + pts(:,3)*cos(theta_rad);
-
-%pts(:,1) = pts(:,1)*cos(phi_rad) + pts(:,3)*sin(phi_rad);
-%pts(:,3) = pts(:,3)*cos(phi_rad) - pts(:,1)*sin(phi_rad);
 % transform circle to random 3D space
 spot = randi([-transCoord, transCoord],1,3);
 for i = 1: n
     pts(i,:) = pts(i,:) + spot;
 end
-% plot
+
 % figure;
 % plot3(pts(:,1), pts(:,2), pts(:,3), 'r.');
 % axis equal;
 % hold on;
-% x = pts(:,1);
-% y = pts(:,2);
-% z = pts(:,3);
-% c = [x,y,z, ones(n,1)]\-(x.^2+y.^2+z.^2); %least squares fit
-% xhat = -c(1)/2;
-% yhat = -c(2)/2;
-% zhat = -c(3)/2;
-% rhat = sqrt(xhat^2+yhat^2+zhat^2 - c(4));
-% plot3(rhat*cos(alpha)+xhat,rhat*sin(alpha)+yhat,zhat*ones(n,1),'g-','linewidth',2) %best fit circle
-
+% 
 % [center, normal, rad] = CircFit3D(pts);
 % alpha = 0:0.01:2*pi;
 % v=null(normal');
