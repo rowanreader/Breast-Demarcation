@@ -1,6 +1,6 @@
-function vectors
+function lines = vectors(pts)
 t = 10; % degrees of separation
-pts = generatePoints;
+% pts = generatePoints;
 [center, normal, radius] = CircFit3D(pts);
 
 % find angles between normal and x, and normal and y (degrees)
@@ -95,4 +95,4 @@ axis equal;
 unrotated = center' + (rotate_xi*(rotate_yi*lines'));
 % plot on original circle
 plot3(unrotated(1,:), unrotated(2,:),unrotated(3,:),'b.');
-
+end
