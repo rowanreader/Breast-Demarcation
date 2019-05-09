@@ -5,7 +5,7 @@ function [centerLoc, circleNormal, radius] = CircFit3D(circLocs)
 meanLoc = mean(circLocs);
 numCurPts = length(circLocs);
 movedToOrigin = circLocs - ones(numCurPts, 1)*meanLoc;
-disp(meanLoc)
+%disp(meanLoc)
 % plot3(curLocs(:, 2), curLocs (:, 3), curLocs (:, 4)); grid on;
 % xlabel('x'); ylabel('y'); zlabel('z');
 if ismissing(movedToOrigin)

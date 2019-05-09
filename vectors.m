@@ -1,4 +1,4 @@
-function lines = vectors(pts)
+function unrotated = vectors(pts)
 t = 10; % degrees of separation
 % pts = generatePoints;
 [center, normal, radius] = CircFit3D(pts);
@@ -95,4 +95,6 @@ axis equal;
 unrotated = center' + (rotate_xi*(rotate_yi*lines'));
 % plot on original circle
 plot3(unrotated(1,:), unrotated(2,:),unrotated(3,:),'b.');
+unrotated = unrotated';
 end
+
